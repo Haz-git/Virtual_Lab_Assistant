@@ -1,0 +1,99 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 20px;
+}
+
+hr {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.subheading-container {
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.note-card-container {
+    border: 1px solid black;
+    padding: 5px 20px;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+
+}
+
+.inst-container {
+    margin: 10px 10px;
+}
+
+.procedure-container {
+    margin: 10px 10px;
+}
+
+.description-container {
+    margin-top: 10px;
+    
+}
+
+.desc-box {
+    resize: none;
+    text-align: center;
+}
+
+/*Need to resize description box based on browser window, width: auto or 100%?*/
+
+.allocated-time {
+    margin: 10px 10px;
+}
+
+.task-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 10px 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.sample-card {
+    border: 1px solid black;
+    padding: 5px 20px;
+
+}
+
+.samp-procedure-container {
+    padding: 10px 10px;
+}
+
+.samp-procedure-container h2 {
+    font-weight: 900;
+    text-align: center;
+}
+
+.sample-card hr {
+    margin: 2% 2%;
+}
+
+.samp-description-container {
+    text-align: justify;
+}
+
+.samp-allocated-time {
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.samp-time {
+    margin-top: 8px;
+}
+
+.samp-btn-containers {
+    text-align: center;
+}
+
+.samp-btn-containers button {
+    margin: 10px 10px;
+}
