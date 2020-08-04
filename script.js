@@ -13,30 +13,39 @@ function checkEmpty(array) {
         if (element.value.trim() === '') {
             showError();
         } else {
-            generateTaskBox(generateHeader());
+            generateTaskBox();
         }
     });
 }
 
 function showError() {
-    console.log("There's an Error!");
     let msgError = document.getElementById('errorLabel');
     msgError.style.visibility = 'visible';
 }
 
-function generateTaskBox(header, body, minute, second) {
-    taskContainer.appendChild(header);
+function generateTaskBox(head, body, min, sec) {
+    taskContainer.appendChild(head);
 }
 
 function generateHeader() {
     let newHeaderBorder = document.createElement("div");
-    newHeaderBorder.className = 'sample-card';
+    newHeaderBorder.className = 'sample-card samp-procedure-container';
+    let newHeaderLine = document.createElement('hr');
     let newHeaderText = document.createElement('h2');newHeaderText.appendChild(document.createTextNode(userProjName.value));
-    
+    newHeaderText.className = 'samp-procedure-container h2';
     newHeaderBorder.appendChild(newHeaderText);
+    newHeaderBorder.appendChild(newHeaderLine);
 
     return newHeaderBorder; //Returns border with header element.
 
+}
+
+function generateDesc() {
+    let newDesc = document.createElement("div");
+    newDesc.className = 'samp-description-container';
+    newDesc.appendChild(document.createTextNode(userProjDesc));
+
+    return newDesc;
 }
 
 
