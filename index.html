@@ -15,28 +15,40 @@
     <div class="subheading-container">Let's Keep Your Tasks In Check!</div>
     <div class="template-container">
         <div class="note-card-container">
-            <div class="note-card">
+            <form id="userForm" class="note-card">
                 <div class="inst-container">
                     <h2>Please Enter The Following Information And Submit!</h2>
                 </div>
                 <div class="procedure-container">
-                    <input type="text" id="projName" placeholder="Project Name?">
+                    <input type="text" id="userProjName" placeholder="Project Name?">
                 </div>
                 <div class="description-container">
                     <textarea name="desc" class="desc-box" id="desc-box" cols="20" rows="10" placeholder="What's Your Project About?"></textarea>
                 </div>
                 <div class="allocated-time">
-                    <p>Time Due:</p>
-                    <input type="time">
+                    <p>Time Allocated:</p>
+                    <div class="time-box">
+                        <div class="minute-container">
+                            <input type="number" id="minutes" name="minutes" min="0" max="60" placeholder="Min" size="2">
+                            <h3>Minutes</h3>
+                        </div>
+                        <div class="seconds-container">
+                            <input type="number" id="seconds" name="seconds" min="0" max="59" placeholder="Sec" maxlength="2">
+                            <h3>Seconds</h3>
+                        </div>
+                    </div>
                 </div>
                 <div class="submit">
-                    <button type="submit">Submit!</button>
+                    <button type="submit" id="userSubmitButton">Submit!</button>
                 </div>
-            </div>
+                <div id="errorLabel" class="error-label">
+                    <h3>Please Input Something!</h3>
+                </div>
+            </form>
         </div>
     </div>
     <hr>
-    <div class="task-container">
+    <div id="taskcontainer" class="task-container">
         <div class="sample-card">
             <div class="samp-procedure-container">
                 <h2>Utilize Autoclave</h2>
@@ -50,57 +62,7 @@
                 <p class="samp-time">Ins Time Here</p>
             </div>
             <div class="samp-btn-containers">
-                <button class="samp-completed">CheckMark</button>
-                <button class="samp-delete">X-mark</button>
-            </div>
-        </div>
-        <div class="sample-card">
-            <div class="samp-procedure-container">
-                <h2>Utilize Autoclave</h2>
-            </div>
-            <hr>
-            <div class="samp-description-container">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut libero iusto ab officiis aperiam quos autem, sunt tenetur? Facere nihil cumque ad doloremque inventore provident ut quisquam corporis officiis omnis!</p>
-            </div>
-            <div class="samp-allocated-time">
-                <p>Time Remaining:</p>
-                <p class="samp-time">Ins Time Here</p>
-            </div>
-            <div class="samp-btn-containers">
-                <button class="samp-completed">CheckMark</button>
-                <button class="samp-delete">X-mark</button>
-            </div>
-        </div>
-        <div class="sample-card">
-            <div class="samp-procedure-container">
-                <h2>Utilize Autoclave</h2>
-            </div>
-            <hr>
-            <div class="samp-description-container">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut libero iusto ab officiis aperiam quos autem, sunt tenetur? Facere nihil cumque ad doloremque inventore provident ut quisquam corporis officiis omnis!</p>
-            </div>
-            <div class="samp-allocated-time">
-                <p>Time Remaining:</p>
-                <p class="samp-time">Ins Time Here</p>
-            </div>
-            <div class="samp-btn-containers">
-                <button class="samp-completed">CheckMark</button>
-                <button class="samp-delete">X-mark</button>
-            </div>
-        </div>
-        <div class="sample-card">
-            <div class="samp-procedure-container">
-                <h2>Utilize Autoclave</h2>
-            </div>
-            <hr>
-            <div class="samp-description-container">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut libero iusto ab officiis aperiam quos autem, sunt tenetur? Facere nihil cumque ad doloremque inventore provident ut quisquam corporis officiis omnis!</p>
-            </div>
-            <div class="samp-allocated-time">
-                <p>Time Remaining:</p>
-                <p class="samp-time">Ins Time Here</p>
-            </div>
-            <div class="samp-btn-containers">
+                <button class="samp-start">Start</button>
                 <button class="samp-completed">CheckMark</button>
                 <button class="samp-delete">X-mark</button>
             </div>
