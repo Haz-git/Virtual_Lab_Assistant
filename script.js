@@ -13,7 +13,7 @@ function checkEmpty(array) {
         if (element.value.trim() === '') {
             showError();
         } else {
-            generateTaskBox();
+            generateTaskBox(generateHeader());
         }
     });
 }
@@ -26,12 +26,18 @@ function showError() {
 function generateTaskBox(head, body, min, sec) {
     taskContainer.appendChild(head);
 }
+//Shortening doc.create.element
+function docCE (tag) {
+    return document.createElement(tag);
+}
 
 function generateHeader() {
     let newHeaderBorder = document.createElement("div");
     newHeaderBorder.className = 'sample-card samp-procedure-container';
-    let newHeaderLine = document.createElement('hr');
-    let newHeaderText = document.createElement('h2');newHeaderText.appendChild(document.createTextNode(userProjName.value));
+    let newHeaderLine = docCE('hr');
+    let newHeaderText = docCE('h2');
+    
+    newHeaderText.appendChild(document.createTextNode(userProjName.value));
     newHeaderText.className = 'samp-procedure-container h2';
     newHeaderBorder.appendChild(newHeaderText);
     newHeaderBorder.appendChild(newHeaderLine);
