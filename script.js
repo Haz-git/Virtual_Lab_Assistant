@@ -6,6 +6,8 @@ const userProjMin = document.getElementById('minutes');
 const userProjSec = document.getElementById('seconds');
 let taskContainer = document.getElementById('taskcontainer');
 
+const completeBox = document.getElementById('doneTaskContainer');
+
 const timerButton = document.getElementById('timerStart');
 const completeButton = document.getElementById('complete');
 const exitButton = document.getElementById('exit');
@@ -56,8 +58,8 @@ function generateTaskBox() {
     newHeaderBorder.className = 'sample-card samp-procedure-container';
     let newHeaderLine = docCE('hr');
     let newHeaderText = docCE('h2');
-    
-    newHeaderText.appendChild(document.createTextNode(userProjName.value));
+    let headerTextNode = document.createTextNode(userProjName.value);
+    newHeaderText.appendChild(headerTextNode);
     newHeaderText.className = 'samp-procedure-container h2';
 
     //Should I assemble this at the bottom?
@@ -114,12 +116,18 @@ function generateTaskBox() {
 
     startBtn.addEventListener('click',() => {
         console.log("This should Start The Timer");
-        startButtonEvent();
+        // startButtonEvent();
     })
 
     compBtn.addEventListener('click',() => {
-        console.log("Test Complete");
-        console.log("This should complete the task, and add it to the task list.")
+        let completeTaskDiv = docCE('div');
+        completeTaskDiv.className = 'indiv-task-container';
+        let completeTaskText = docCE('h2');
+        completeTaskText.innerHTML = headerTextNode.textContent;
+        console.log(headerTextNode);
+        completeTaskDiv.appendChild(completeTaskText);
+        completeBox.appendChild(completeTaskDiv);
+        taskContainer.removeChild(newHeaderBorder);
     })
 
     taskContainer.appendChild(newHeaderBorder);//Appending Everything to parent container 
@@ -167,6 +175,5 @@ exitButton.addEventListener('click', () => {
 
 
 
-// Notes 
-
-// I want a single function that will appendChild with callback functions designed to return pieces of the sample box, but what the user inputs...If all else fails, we can just write a large functions that creates the whole damn thing and name it generate().
+// Notes 8/5/2020
+// Implemented Completed Task features, adding new task card features, and exiting task card features. Probably should start to implement the timer feature...and what happens when the timer hits 0?

@@ -21,6 +21,10 @@ hr {
     padding-bottom: 20px;
 }
 
+.subheading-extended h2 {
+    font-weight: 900;
+}
+
 .template-container {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -87,6 +91,18 @@ hr {
     display: relative;
     padding: 10px 10px;
     color: red;
+}
+
+.completed-tasks-container {
+    text-align: center;
+}
+
+.indiv-task-container {
+    text-align: center;
+    background-color: green;
+    padding: 10px 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 
