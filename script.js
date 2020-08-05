@@ -6,8 +6,12 @@ const userProjMin = document.getElementById('minutes');
 const userProjSec = document.getElementById('seconds');
 let taskContainer = document.getElementById('taskcontainer');
 
-function checkAllEmpty(array) {
+const timerButton = document.getElementById('timerStart');
+const completeButton = document.getElementById('complete');
+const exitButton = document.getElementById('exit');
 
+function checkAllEmpty(array) {
+    //Checks if all the fields are empty;
     let results = array.every(function(element) {
         if ((element.value.trim()).length === 0) {
             return true;
@@ -20,6 +24,7 @@ function checkAllEmpty(array) {
 }
 
 function checkAnyEmpty() {
+    //Checks if any fields are left empty;
     let results;
     let pName = (userProjName.value.trim()).length;
     let pDesc = (userProjDesc.value.trim()).length;
@@ -36,12 +41,13 @@ function checkAnyEmpty() {
 
 
 function showError() {
+    //Shows error message
     let msgError = document.getElementById('errorLabel');
     msgError.style.visibility = 'visible';
 }
 
-//Shortening doc.create.element
 function docCE (tag) {
+    //Shortening doc.create.element
     return document.createElement(tag);
 }
 
@@ -74,17 +80,58 @@ function generateTaskBox() {
     timeDivText1.appendChild(document.createTextNode('Time Remaining'));
     timeDiv.appendChild(timeDivText1);
     let timeDivText2 = docCE('p');
-    timeDivText2.appendChild(document.createTextNode(userProjMin + " : " + userProjSec));
+    timeDivText2.appendChild(document.createTextNode(userProjMin.value + " : " + userProjSec.value));
+    timeDivText2.className = 'samp-time';
     timeDiv.appendChild(timeDivText2);
 
-    newHeaderBorder.appendChild(timeDiv);
+    newHeaderBorder.appendChild(timeDiv); //Add Timer Elements
 
-    taskContainer.appendChild(newHeaderBorder);
+    let buttonContainer = docCE('div');
+    buttonContainer.className = 'samp-btn-containers';
+    let startBtn = docCE('button');
+    let compBtn = docCE('button');
+    let xBtn = docCE('button');
+    startBtn.className = 'samp-start';
+    compBtn.className = 'samp-completed';
+    xBtn.className = 'samp-delete';
+    startBtn.innerHTML = 'Start';
+    compBtn.innerHTML = 'CheckMark';
+    xBtn.innerHTML = 'Exit';
+    startBtn.id = 'newTimerStart';
+    compBtn.id = 'newComplete';
+    xBtn.id = 'newExit';
+    buttonContainer.appendChild(startBtn);
+    buttonContainer.appendChild(compBtn);
+    buttonContainer.appendChild(xBtn);
 
+    newHeaderBorder.appendChild(buttonContainer);
+
+    //Adding event listeners to new buttons...
+
+    xBtn.addEventListener('click',() => {
+        taskContainer.removeChild(newHeaderBorder);
+    })
+
+    startBtn.addEventListener('click',() => {
+        console.log("This should Start The Timer");
+        startButtonEvent();
+    })
+
+    compBtn.addEventListener('click',() => {
+        console.log("Test Complete");
+        console.log("This should complete the task, and add it to the task list.")
+    })
+
+    taskContainer.appendChild(newHeaderBorder);//Appending Everything to parent container 
 }
 
+//New Task Box Event Listeners:
 
-//Event Listeners
+
+
+
+
+//Global Scope Event Listeners
 
 userForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -100,10 +147,25 @@ userForm.addEventListener('submit', (event) => {
     } else {
         showError();
     }
-
-
-
 });
+
+timerButton.addEventListener('click',() => {
+    console.log("This should start the timer");
+});
+
+completeButton.addEventListener('click', () => {
+    console.log("This should delete the current task box");
+    //Should I input a function that records all finished tasks in the upper right??
+});
+
+exitButton.addEventListener('click', () => {
+    console.log("This is exit the current task box");
+});
+
+
+
+
+
 
 // Notes 
 
