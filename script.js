@@ -12,6 +12,12 @@ const timerButton = document.getElementById('timerStart');
 const completeButton = document.getElementById('complete');
 const exitButton = document.getElementById('exit');
 
+
+function clearForm(...inputs) {
+    //Clears all the input fields on the form:
+    inputs.forEach(input => input.value = '');
+}
+
 function checkAllEmpty(array) {
     //Checks if all the fields are empty;
     let results = array.every(function(element) {
@@ -82,8 +88,11 @@ function generateTaskBox() {
     timeDivText1.appendChild(document.createTextNode('Time Remaining'));
     timeDiv.appendChild(timeDivText1);
     let timeDivText2 = docCE('p');
-    timeDivText2.appendChild(document.createTextNode(userProjMin.value + " : " + userProjSec.value));
+    let newMin = userProjMin.value;
+    let newSec = userProjSec.value;
+    timeDivText2.appendChild(document.createTextNode(newMin + "m " + newSec + "s"));
     timeDivText2.className = 'samp-time';
+    timeDivText2.id = 'timer';
     timeDiv.appendChild(timeDivText2);
 
     newHeaderBorder.appendChild(timeDiv); //Add Timer Elements
@@ -112,12 +121,27 @@ function generateTaskBox() {
 
     xBtn.addEventListener('click',() => {
         taskContainer.removeChild(newHeaderBorder);
-    })
+    });
 
     startBtn.addEventListener('click',() => {
         console.log("This should Start The Timer");
-        // startButtonEvent();
-    })
+        // let min2 = newMin;
+        // let sec2 = newSec;
+
+        let intervalTimer = setInterval(function() {
+            document.getElementById('timer').innerHTML = newMin + "m " + newSec + "s";
+            newSec--;
+            if (newSec == 0) {
+                newMin--;
+                newSec = 60;
+
+                if (newMin <= -1) {
+                    clearInterval(intervalTimer);
+                    document.getElementById('timer').innerHTML = "Task Should Be Finished!";
+                }
+            }
+        }, 1000);
+    });
 
     compBtn.addEventListener('click',() => {
         let completeTaskDiv = docCE('div');
@@ -128,13 +152,12 @@ function generateTaskBox() {
         completeTaskDiv.appendChild(completeTaskText);
         completeBox.appendChild(completeTaskDiv);
         taskContainer.removeChild(newHeaderBorder);
-    })
+    });
 
     taskContainer.appendChild(newHeaderBorder);//Appending Everything to parent container 
 }
 
 //New Task Box Event Listeners:
-
 
 
 
@@ -152,9 +175,11 @@ userForm.addEventListener('submit', (event) => {
 
     if (isAllEmpty === false && isAnyEmpty === false) {
         generateTaskBox();
+        clearForm(userProjName, userProjDesc, userProjMin, userProjSec);
     } else {
         showError();
     }
+
 });
 
 timerButton.addEventListener('click',() => {
