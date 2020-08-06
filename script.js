@@ -125,24 +125,27 @@ function generateTaskBox() {
 
     startBtn.addEventListener('click',() => {
         console.log("This should Start The Timer");
-        // let min2 = newMin;
-        // let sec2 = newSec;
+        let min2 = newMin;
+        let sec2 = newSec;
 
-        let intervalTimer = setInterval(function() {
-            document.getElementById('timer').innerHTML = newMin + "m " + newSec + "s";
-            newSec--;
-            if (newSec == 0) {
-                newMin--;
-                newSec = 60;
+        let intervalTimer = this.setInterval(function() {
+            timeDivText2.innerHTML =  min2 + "m " + sec2 + "s";
+            sec2--;
+            if (sec2 == 0) {
+                min2--;
+                sec2 = 60;
 
-                if (newMin <= -1) {
+                if (min2 <= -1) {
                     clearInterval(intervalTimer);
-                    document.getElementById('timer').innerHTML = "Task Should Be Finished!";
+                    timeDivText2.innerHTML = "Task Should Be Finished!";
                 }
             }
         }, 1000);
     });
 
+    //Bug found here, it turns out that every taskbox that is generated has the same button with the same button ID. Therefore, when two task boxes are generated with different time values, clicking either start button will only countdown from a single task box (the first one). If you click start from the second task box, the minute and seconds value from the first task box is converted to the second's values and countdown starts from there. There needs to be a way to create separate event listeners...I think the solution lies in event delegation.....Solved! ---I just needed to connect to the individual timeDivText2 for each of the dynamically loaded task boxes! Grabbing it using the ID made me grab all of the timers and incremented it at once.
+
+    
     compBtn.addEventListener('click',() => {
         let completeTaskDiv = docCE('div');
         completeTaskDiv.className = 'indiv-task-container';
