@@ -150,8 +150,10 @@ function generateTaskBox() {
         let completeTaskDiv = docCE('div');
         completeTaskDiv.className = 'indiv-task-container';
         let completeTaskText = docCE('h2');
-        completeTaskText.innerHTML = headerTextNode.textContent;
-        console.log(headerTextNode);
+        completeTaskText.innerHTML = headerTextNode.textContent + " ";
+        let checkMarkSym = docCE('i');
+        checkMarkSym.className = 'fas fa-check-double';
+        completeTaskText.appendChild(checkMarkSym);
         completeTaskDiv.appendChild(completeTaskText);
         completeBox.appendChild(completeTaskDiv);
         taskContainer.removeChild(newHeaderBorder);

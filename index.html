@@ -3,56 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4194a93c4e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Virtual Lab Assistant</title>
 </head>
 <body>
     <div class="header-container">
-        <h1>Virtual Lab Assistant</h1>
+        <h1>
+            <i class="fas fa-vial"></i>
+            Virtual Lab Assistant
+            <i class="fas fa-bacteria"></i>
+        </h1>
+        <hr>
+        <div class="subheading-container">
+            <h2>I'll Keep Your Tasks In Check!</h2>
+        </div>
     </div>
-    <hr>
-    <div class="subheading-container">Let's Keep Your Tasks In Check!</div>
     <div class="subheading-extended">
-        <h2>Task Card Template</h2>
-        <h2>Completed Tasks</h2>
+        <div class="task-card-template-container">
+            <h2>Task Card Template <i class="fas fa-clipboard-list"></i></h2>
+        </div>
+        <div class="completed-task-container">
+            <h2>Completed Tasks <i class="fas fa-check-square"></i></h2>
+        </div>
     </div>
     <div class="template-container">
         <div class="note-card-container">
-            <form id="userForm" class="note-card">
+            <form id="userForm" class="note-card" autocomplete="off">
                 <div class="inst-container">
-                    <h2>Please Enter The Following Information And Submit!</h2>
+                    <i class="fas fa-pen-alt fa-2x"></i>
                 </div>
                 <div class="procedure-container">
-                    <input type="text" id="userProjName" placeholder="Project Name?">
+                    <input type="text" id="userProjName" placeholder="">
                 </div>
                 <div class="description-container">
-                    <textarea name="desc" class="desc-box" id="desc-box" cols="20" rows="10" placeholder="What's Your Project About?"></textarea>
+                    <textarea name="desc" class="desc-box" id="desc-box" cols="20" rows="10" placeholder=""></textarea>
                 </div>
                 <div class="allocated-time">
-                    <p>Time Allocated:</p>
+                    <i class="fas fa-hourglass-half fa-2x"></i>
                     <div class="time-box">
                         <div class="minute-container">
                             <input type="number" id="minutes" name="minutes" min="0" max="60" size="2">
-                            <h3>Minutes</h3>
+                            <h3>Min</h3>
                         </div>
                         <div class="seconds-container">
                             <input type="number" id="seconds" name="seconds" min="0" max="59" maxlength="2">
-                            <h3>Seconds</h3>
+                            <h3>Sec</h3>
                         </div>
                     </div>
                 </div>
                 <div class="submit">
-                    <button type="submit" id="userSubmitButton">Submit!</button>
+                    <button type="submit" id="userSubmitButton"><i class="fas fa-plus fa-2x"></i></button>
+                    <button type="reset" id="userResetButton"><i class="fas fa-eraser fa-2x"></i></button>
                 </div>
                 <div id="errorLabel" class="error-label">
-                    <h3>Please Write In All The Fields!</h3>
+                    <h3>Complete All Fields</h3>
                 </div>
             </form>
         </div>
         <div id="doneTaskContainer" class="completed-tasks-container">
             <div class="indiv-task-container">
-                <h2>Test</h2>
+                <h2>Serial Dilution <i class="fas fa-check-double"></i></h2>
             </div>
         </div>
     </div>
