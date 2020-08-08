@@ -102,12 +102,21 @@ function generateTaskBox() {
     let startBtn = docCE('button');
     let compBtn = docCE('button');
     let xBtn = docCE('button');
+    let sBI = docCE('i');
+    sBI.className = 'fas fa-stopwatch fa-2x';
+    startBtn.appendChild(sBI);
+    let cBI = docCE('i');
+    cBI.className = 'fas fa-check fa-2x';
+    compBtn.appendChild(cBI);
+    let xBI = docCE('i');
+    xBI.className = 'fas fa-ban fa-2x';
+    xBtn.appendChild(xBI);
     startBtn.className = 'samp-start';
     compBtn.className = 'samp-completed';
     xBtn.className = 'samp-delete';
-    startBtn.innerHTML = 'Start';
-    compBtn.innerHTML = 'CheckMark';
-    xBtn.innerHTML = 'Exit';
+    // startBtn.innerHTML = 'Start';
+    // compBtn.innerHTML = 'CheckMark';
+    // xBtn.innerHTML = 'Exit';
     startBtn.id = 'newTimerStart';
     compBtn.id = 'newComplete';
     xBtn.id = 'newExit';
@@ -131,7 +140,7 @@ function generateTaskBox() {
         let intervalTimer = this.setInterval(function() {
             timeDivText2.innerHTML =  min2 + "m " + sec2 + "s";
             sec2--;
-            if (sec2 == 0) {
+            if (sec2 <= 0) {
                 min2--;
                 sec2 = 60;
 
@@ -141,6 +150,8 @@ function generateTaskBox() {
                 }
             }
         }, 1000);
+
+        buttonContainer.removeChild(startBtn);
     });
 
     //Bug found here, it turns out that every taskbox that is generated has the same button with the same button ID. Therefore, when two task boxes are generated with different time values, clicking either start button will only countdown from a single task box (the first one). If you click start from the second task box, the minute and seconds value from the first task box is converted to the second's values and countdown starts from there. There needs to be a way to create separate event listeners...I think the solution lies in event delegation.....Solved! ---I just needed to connect to the individual timeDivText2 for each of the dynamically loaded task boxes! Grabbing it using the ID made me grab all of the timers and incremented it at once.
