@@ -5,13 +5,13 @@ const userProjDesc = document.getElementById('desc-box');
 const userProjMin = document.getElementById('minutes');
 const userProjSec = document.getElementById('seconds');
 let taskContainer = document.getElementById('taskcontainer');
-
+let sampleCard = document.getElementById('sampleCard');
 const completeBox = document.getElementById('doneTaskContainer');
-
 const timerButton = document.getElementById('timerStart');
 const completeButton = document.getElementById('complete');
 const exitButton = document.getElementById('exit');
-
+let compTaskBoxClose = document.getElementById('compTaskClose');
+let singleTask = document.getElementById('singletaskcontainer');
 
 function clearForm(...inputs) {
     //Clears all the input fields on the form:
@@ -160,6 +160,11 @@ function generateTaskBox() {
     compBtn.addEventListener('click',() => {
         let completeTaskDiv = docCE('div');
         completeTaskDiv.className = 'indiv-task-container';
+        let completeTaskDelBtn = docCE('button');
+        let completeTaskIcon = docCE('i');
+        completeTaskIcon.className = 'fas fa-window-close';
+        completeTaskDelBtn.appendChild(completeTaskIcon);
+        completeTaskDiv.appendChild(completeTaskDelBtn);
         let completeTaskText = docCE('h2');
         completeTaskText.innerHTML = headerTextNode.textContent + " ";
         let checkMarkSym = docCE('i');
@@ -167,6 +172,11 @@ function generateTaskBox() {
         completeTaskText.appendChild(checkMarkSym);
         completeTaskDiv.appendChild(completeTaskText);
         completeBox.appendChild(completeTaskDiv);
+
+        completeTaskDelBtn.addEventListener('click', () => {
+            completeBox.removeChild(completeTaskDiv);
+        })
+        
         taskContainer.removeChild(newHeaderBorder);
     });
 
@@ -199,22 +209,21 @@ userForm.addEventListener('submit', (event) => {
 });
 
 timerButton.addEventListener('click',() => {
-    console.log("This should start the timer");
+    taskContainer.removeChild(sampleCard);
 });
 
 completeButton.addEventListener('click', () => {
-    console.log("This should delete the current task box");
+    taskContainer.removeChild(sampleCard);
     //Should I input a function that records all finished tasks in the upper right??
 });
 
 exitButton.addEventListener('click', () => {
-    console.log("This is exit the current task box");
+    taskContainer.removeChild(sampleCard);
 });
 
+compTaskBoxClose.addEventListener('click', () => {
+    completeBox.removeChild(singleTask);
+})
 
 
 
-
-
-// Notes 8/5/2020
-// Implemented Completed Task features, adding new task card features, and exiting task card features. Probably should start to implement the timer feature...and what happens when the timer hits 0?

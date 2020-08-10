@@ -212,6 +212,7 @@ hr {
 }
 
 .indiv-task-container {
+    display: flex;
     text-align: center;
     border-radius: 4px;
     background-color: rgb(70, 147, 114);
@@ -222,13 +223,33 @@ hr {
     margin-top: 10px;
     color: rgb(26, 34, 93);
     font-weight: 900;
-    transition-timing-function: ease-in-out;
-    transition-duration: .5s;
+    transition-timing-function: ease-in;
+    transition-duration: .2s;
     filter: drop-shadow(0 0 0.3rem rgb(123, 129, 177));
 }
 
 .indiv-task-container:hover {
     transform: scale(1.05);
+}
+
+.indiv-task-container button {
+    color: black;
+    border: none;
+    background-color: transparent;
+}
+
+.indiv-task-container button:focus {
+    outline: none;
+    box-shadow: none;
+
+}
+
+.indiv-task-container button:hover {
+    cursor: pointer;
+}
+
+.indiv-task-container h2 {
+    flex-grow: 1;
 }
 
 
